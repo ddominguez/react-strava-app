@@ -1,0 +1,28 @@
+.strava-app {
+    border: 1px solid #888;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.strava-activity-list {
+    /* border: 1px solid #88f; */
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    min-width: 200px;
+}
+
+.strava-activity-details {
+    border: 1px solid #f88;
+    margin: 5px;
+    width: 75%;
+}
+
+.strava-activity {
+    border: 1px solid #888;
+    margin:5px;
+    padding: 5px;
+    cursor: pointer;
+}

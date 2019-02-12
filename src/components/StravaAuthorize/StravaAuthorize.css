@@ -1,0 +1,7 @@
+.auth-button {
+    display: flex;
+}
+
+.auth-button-icon {
+    cursor: pointer;
+}
