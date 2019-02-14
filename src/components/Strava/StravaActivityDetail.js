@@ -31,16 +31,27 @@ class StravaActivityDetail extends Component {
       distance,
       elapsed_time
     } = this.props.activity;
-    const distanceInMiles = metersToMiles(distance) + ' Miles';
+    const distanceInMiles = metersToMiles(distance) + ' mi';
     const elapsedTime = secondsToHms(elapsed_time);
-    const pace = minutesPerMile(elapsed_time, distance);
+    const pace = minutesPerMile(elapsed_time, distance) + '/mi';
     return (
       <div className="strava-activity-details">
-        {start_date} <br />
-        {name} <br />
-        {distanceInMiles} <br />
-        {elapsedTime} <br />
-        {pace} <br />
+        <div className="strava-activity-date">{start_date}</div>
+        <div className="strava-activity-name">{name}</div>
+        <div class="strava-actvivity-stats">
+          <div className="stat distance">
+            <span className="stat-label">Distance</span>
+            <span className="stat-value">{distanceInMiles}</span>
+          </div>
+          <div className="stat elapsed-time">
+            <span className="stat-label">Elapsed Time</span>
+            <span className="stat-value">{elapsedTime}</span>
+          </div>
+          <div className="stat pace">
+            <span className="stat-label">Pace</span>
+            <span className="stat-value">{pace}</span>
+          </div>
+        </div>
       </div>
     );
   }

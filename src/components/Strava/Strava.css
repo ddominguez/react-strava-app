@@ -3,15 +3,22 @@
     display: flex;
     flex-direction: row;
     margin: auto;
+    width: 800px;
 }
 
 .strava-activity-list {
-    /* border: 1px solid #88f; */
     margin: 5px;
     display: flex;
     flex-direction: column;
     width: 25%;
     min-width: 200px;
+}
+
+.strava-activity {
+    border: 1px solid #888;
+    margin:5px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .strava-activity-details {
@@ -20,9 +27,39 @@
     width: 75%;
 }
 
-.strava-activity {
-    border: 1px solid #888;
-    margin:5px;
-    padding: 5px;
-    cursor: pointer;
+.strava-activity-details .strava-activity-date {
+    font-size: 0.9em;
+}
+
+.strava-activity-details .strava-activity-name {
+    font-size: 2.1em;
+    margin: 10px 0;
+}
+
+.strava-actvivity-stats {
+    display: flex;
+}
+
+.strava-actvivity-stats .stat {
+    margin-right: 15px;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+}
+
+.strava-actvivity-stats .stat:last-child {
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+.stat-label, .stat-value {
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9em;
+}
+
+.stat-value {
+    font-size: 1.9em;
 }
