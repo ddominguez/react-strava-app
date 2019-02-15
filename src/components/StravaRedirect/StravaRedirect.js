@@ -15,7 +15,7 @@ class StravaRedirect extends Component {
     fetch(tokenURI)
       .then(res => res.json())
       .then(res => {
-        this.props.tokenUpdate(res);
+        this.props.handleTokenUpdate(res);
         this.setState({
           authorizeComplete: true
         });

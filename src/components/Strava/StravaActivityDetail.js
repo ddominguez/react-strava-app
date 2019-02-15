@@ -38,7 +38,7 @@ class StravaActivityDetail extends Component {
       <div className="strava-activity-details">
         <div className="strava-activity-date">{start_date}</div>
         <div className="strava-activity-name">{name}</div>
-        <div class="strava-actvivity-stats">
+        <div className="strava-actvivity-stats">
           <div className="stat distance">
             <span className="stat-label">Distance</span>
             <span className="stat-value">{distanceInMiles}</span>
