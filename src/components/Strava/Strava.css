@@ -14,10 +14,15 @@
 }
 
 .strava-activity {
-    border: 1px solid #888;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     margin:5px;
     padding: 5px;
     cursor: pointer;
+}
+
+.strava-activity.selected {
+    background-color: #ff8c5b;
 }
 
 .strava-activity-details {

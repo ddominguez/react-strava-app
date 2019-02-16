@@ -7,8 +7,12 @@ class StravaActivity extends Component {
   }
 
   render() {
+    const selectedClassName = this.props.isSelected ? 'selected' : null;
     return (
-      <div className="strava-activity" onClick={() => this.handleOnClick(this.props.id)}>
+      <div
+        className={`strava-activity ${selectedClassName}`}
+        onClick={() => this.handleOnClick(this.props.id)}
+      >
         <div className="strava-activity-date">
           {this.props.start_date}
         </div>
