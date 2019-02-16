@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './Strava.css';
 import StravaActivity from './StravaActivity';
 import StravaActivityDetail from './StravaActivityDetail';
+import StravaUser from '../StravaUser'
 
 class Strava extends Component {
   state = {
@@ -42,6 +43,7 @@ class Strava extends Component {
     const selectedActivity = activities[selectedActivityIndex] || null;
     return (
       <div className="strava-app">
+        <StravaUser />
         <div className="strava-activity-list">
         {activities.map(item => {
           return <StravaActivity

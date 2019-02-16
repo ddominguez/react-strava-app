@@ -1,13 +1,12 @@
 .strava-app {
-    border: 1px solid #888;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
     margin: auto;
-    width: 800px;
+    width: 900px;
 }
 
 .strava-activity-list {
-    margin: 5px;
     display: flex;
     flex-direction: column;
     width: 25%;
@@ -22,7 +21,6 @@
 }
 
 .strava-activity-details {
-    border: 1px solid #f88;
     margin: 5px;
     width: 75%;
 }

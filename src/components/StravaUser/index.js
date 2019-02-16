@@ -1,13 +1,12 @@
 import React from 'react';
-import Strava from './Strava';
+import StravaUser from './StravaUser';
 import {StravaContext} from '../../contexts/StravaContext';
 
 export default () => (
     <StravaContext.Consumer>
-        {({token, refreshToken}) => (
-            <Strava
-                token={token}
-                refreshToken={refreshToken}
+        {({user}) => (
+            <StravaUser
+                user={user}
             />
         )}
     </StravaContext.Consumer>

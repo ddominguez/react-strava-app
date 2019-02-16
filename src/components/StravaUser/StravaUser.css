@@ -1,0 +1,17 @@
+.strava-user {
+    margin: 5px;
+    padding: 5px;
+    min-width: 130px;
+    text-align: center;
+}
+
+.strava-user img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.strava-user-info .name {
+    margin: 10px 0;
+    font-size: 0.9em;
+}
