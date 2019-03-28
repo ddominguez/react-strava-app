@@ -2,10 +2,27 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Info
 
-This is a simple react web application that does the following:
+This is a simple react front-end that does the following:
 
 * Initiates Strava's OAuth workflow
 * Request and store an access token from Strava via web server
 * Use access token to request 10 latest activities from Strava
 
-**Demo coming soon**
+## Setup
+
+Clone https://github.com/ddominguez/flask-strava and follow directions to setup and start flask app.
+
+Create .env.local file in root directory and add the following variables.
+
+```
+REACT_APP_AUTH_URI = 'http://localhost:5000/strava_authorize'
+REACT_APP_TOKEN_URI = 'http://localhost:5000/strava_token'
+```
+
+In this example, the URIs are the endpoints are from the flask app.
+
+Start react app
+
+```
+yarn start
+```
