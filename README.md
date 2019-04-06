@@ -12,14 +12,13 @@ This is a simple react front-end that does the following:
 
 Clone https://github.com/ddominguez/flask-strava and follow directions to setup and start flask app.
 
-Create .env.local file in root directory and add the following variables.
+Create .env.local file in root directory and add the following variables. In this example, the URIs are the endpoints are from the flask app.
 
 ```
 REACT_APP_AUTH_URI = 'http://localhost:5000/strava_authorize'
 REACT_APP_TOKEN_URI = 'http://localhost:5000/strava_token'
+REACT_APP_GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY'
 ```
-
-In this example, the URIs are the endpoints are from the flask app.
 
 Start react app
 
