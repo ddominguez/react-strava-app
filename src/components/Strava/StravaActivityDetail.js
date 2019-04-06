@@ -29,7 +29,8 @@ class StravaActivityDetail extends Component {
       name,
       start_date,
       distance,
-      elapsed_time
+      elapsed_time,
+      map
     } = this.props.activity;
     const distanceInMiles = metersToMiles(distance) + ' mi';
     const elapsedTime = secondsToHms(elapsed_time);
@@ -52,6 +53,15 @@ class StravaActivityDetail extends Component {
             <span className="stat-value">{pace}</span>
           </div>
         </div>
+
+        <img
+          alt={this.props.name}
+          src={
+            'https://maps.googleapis.com/maps/api/staticmap?size=500x400&path=enc:'
+            +map.summary_polyline
+            +'&key='+process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+          }
+        />
       </div>
     );
   }
