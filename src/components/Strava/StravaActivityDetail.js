@@ -57,7 +57,7 @@ class StravaActivityDetail extends Component {
         <img
           alt={this.props.name}
           src={
-            'https://maps.googleapis.com/maps/api/staticmap?size=500x400&path=enc:'
+            'https://maps.googleapis.com/maps/api/staticmap?scale=2&size=640x300&path=enc:'
             +map.summary_polyline
             +'&key='+process.env.REACT_APP_GOOGLE_MAPS_API_KEY
           }
