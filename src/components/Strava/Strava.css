@@ -1,16 +1,15 @@
 .strava-app {
+    display: grid;
+    grid-template-areas:
+        "user user"
+        "activityList activityDetails";
     background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    width: 900px;
 }
 
 .strava-activity-list {
+    grid-area: activityList;
     display: flex;
     flex-direction: column;
-    width: 25%;
-    min-width: 200px;
 }
 
 .strava-activity {
@@ -26,8 +25,7 @@
 }
 
 .strava-activity-details {
-    margin: 5px;
-    width: 75%;
+    grid-area: activityDetails;
 }
 
 .strava-activity-details .strava-activity-date {

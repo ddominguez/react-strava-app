@@ -1,7 +1,5 @@
 .strava-user {
-    margin: 5px;
-    padding: 5px;
-    min-width: 130px;
+    grid-area: user;
     text-align: center;
 }
 
