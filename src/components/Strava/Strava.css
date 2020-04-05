@@ -8,7 +8,6 @@
 
 .strava-activity-list {
     grid-area: activityList;
-    display: flex;
     flex-direction: column;
     display: none;
 }
@@ -35,7 +34,8 @@
 }
 
 .strava-activity-details .strava-activity-name {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
     margin: 10px;
 }
 
@@ -59,4 +59,22 @@
 
 .stat-value {
     font-size: 1.4rem;
+}
+
+@media screen and (min-width: 768px) {
+    .strava-app {
+        grid-template-areas:
+            "user user"
+            "activityList activityDetails";
+        max-width: 992px;
+        margin: 0 auto;
+    }
+
+    .strava-activity-list {
+        display: flex;
+    }
+
+    .strava-activity-details .strava-activity-name {
+        font-size: 2rem;
+    }
 }
