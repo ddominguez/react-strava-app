@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { StaticMap } from './StaticMap';
+
 const metersToMiles = (meters) => {
   return Number.parseFloat(meters * 0.00062137).toFixed(2);
 }
@@ -54,14 +56,7 @@ class StravaActivityDetail extends Component {
           </div>
         </div>
 
-        <img
-          alt={this.props.name}
-          src={
-            'https://maps.googleapis.com/maps/api/staticmap?scale=2&size=640x300&path=enc:'
-            +map.summary_polyline
-            +'&key='+process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-          }
-        />
+        <StaticMap mapType="mapbox" name={name} polyline={map.summary_polyline} />
       </div>
     );
   }

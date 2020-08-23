@@ -17,7 +17,10 @@ Create .env.local file in root directory and add the following variables. In thi
 ```
 REACT_APP_AUTH_URI = 'http://localhost:5000/strava_authorize'
 REACT_APP_TOKEN_URI = 'http://localhost:5000/strava_token'
+
 REACT_APP_GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY'
+or
+REACT_APP_MAP_BOX_ACCESS_TOKEN = 'YOUR_MAP_BOX_ACCESS_TOKEN'
 ```
 
 Start react app
