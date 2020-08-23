@@ -1,16 +1,15 @@
 .strava-app {
+    display: grid;
+    grid-template-areas:
+        "user"
+        "activityDetails";
     background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    width: 900px;
 }
 
 .strava-activity-list {
-    display: flex;
+    grid-area: activityList;
     flex-direction: column;
-    width: 25%;
-    min-width: 200px;
+    display: none;
 }
 
 .strava-activity {
@@ -26,33 +25,28 @@
 }
 
 .strava-activity-details {
-    margin: 5px;
-    width: 75%;
+    grid-area: activityDetails;
 }
 
 .strava-activity-details .strava-activity-date {
-    font-size: 0.9em;
+    font-size: 1rem;
+    margin: 10px;
 }
 
 .strava-activity-details .strava-activity-name {
-    font-size: 2.1em;
-    margin: 10px 0;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    margin: 10px;
+}
+
+.strava-activity-details img {
+    width: 100%;
 }
 
 .strava-actvivity-stats {
     display: flex;
-}
-
-.strava-actvivity-stats .stat {
-    margin-right: 15px;
-    border-right: 1px solid #ddd;
-    padding-right: 20px;
-}
-
-.strava-actvivity-stats .stat:last-child {
-    padding: 0;
-    border: none;
-    margin: 0;
+    justify-content: space-between;
+    margin: 10px;
 }
 
 .stat-label, .stat-value {
@@ -60,9 +54,27 @@
 }
 
 .stat-label {
-    font-size: 0.9em;
+    font-size: 1rem;
 }
 
 .stat-value {
-    font-size: 1.9em;
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 768px) {
+    .strava-app {
+        grid-template-areas:
+            "user user"
+            "activityList activityDetails";
+        max-width: 992px;
+        margin: 0 auto;
+    }
+
+    .strava-activity-list {
+        display: flex;
+    }
+
+    .strava-activity-details .strava-activity-name {
+        font-size: 2rem;
+    }
 }
