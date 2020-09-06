@@ -37,9 +37,10 @@ class StravaActivityDetail extends Component {
     const distanceInMiles = metersToMiles(distance) + ' mi';
     const elapsedTime = secondsToHms(elapsed_time);
     const pace = minutesPerMile(elapsed_time, distance) + '/mi';
+    const activityDate = new Date(start_date).toDateString();
     return (
       <div className="strava-activity-details">
-        <div className="strava-activity-date">{start_date}</div>
+        <div className="strava-activity-date">{activityDate}</div>
         <div className="strava-activity-name">{name}</div>
         <div className="strava-actvivity-stats">
           <div className="stat distance">
