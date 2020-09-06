@@ -4,6 +4,7 @@ class StravaActivity extends Component {
 
   handleOnClick = (id) => {
     this.props.selectActivity(id);
+    document.querySelector(".strava-activity-list").classList.remove("open");
   }
 
   render() {
@@ -24,4 +25,4 @@ class StravaActivity extends Component {
   }
 }
   
-  export default StravaActivity;
+export default StravaActivity;

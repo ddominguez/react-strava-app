@@ -61,6 +61,31 @@
     font-size: 1.4rem;
 }
 
+.activity-menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ff8c5b;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .strava-activity-list.open {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .strava-app {
         grid-template-areas:
@@ -76,5 +101,9 @@
 
     .strava-activity-details .strava-activity-name {
         font-size: 2rem;
+    }
+
+    .activity-menu {
+        display: none;
     }
 }

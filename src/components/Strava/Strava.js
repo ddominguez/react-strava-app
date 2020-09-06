@@ -34,6 +34,10 @@ class Strava extends Component {
     })
   }
 
+  handleActivityMenuClick = () => {
+    document.querySelector(".strava-activity-list").classList.add("open");
+  }
+
   render() {
     const {
       activities,
@@ -43,6 +47,7 @@ class Strava extends Component {
     const selectedActivity = activities[selectedActivityIndex] || null;
     return (
       <div className="strava-app">
+        <button className="activity-menu" onClick={this.handleActivityMenuClick}>Activities</button>
         <StravaUser />
         <div className="strava-activity-list">
         {activities.map((item, index) => {
