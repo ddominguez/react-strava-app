@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 
-import {StravaProvider} from './contexts/StravaContext'
+import {StravaContextProvider} from './contexts/StravaContext'
 
 ReactDOM.render(
-    <StravaProvider>
+    <StravaContextProvider>
         <App />
-    </StravaProvider>, document.getElementById('root'));
+    </StravaContextProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
