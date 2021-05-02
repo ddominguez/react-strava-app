@@ -1,8 +1,12 @@
 import React from 'react';
+
+import { StravaStateContext } from "../../contexts/StravaContext";
+
 import './StravaUser.css';
 
-const StravaUser = (props) => {
-  const { user } = props;
+const StravaUser = () => {
+  const stravaState = React.useContext(StravaStateContext);
+  const { user } = stravaState;
   const fullname = `${user.firstname} ${user.lastname}`;
   return (
     <div className="strava-user">
