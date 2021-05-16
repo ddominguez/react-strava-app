@@ -1,35 +1,36 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
 
-import { STRAVA_TOKEN_URI } from "../../constants";
 import { StravaDispatchContext, StravaStateContext } from "../../contexts/StravaContext";
+import { fetchAuthorizedStravaUser } from "../../api/strava";
 
 const StravaRedirect = () => {
   const dispatch = React.useContext(StravaDispatchContext);
   const stravaState = React.useContext(StravaStateContext);
 
   React.useEffect(() => {
+    let isMounted = true;
     if (!stravaState.token) {
       const searchParams = new URLSearchParams(window.location.search);
-      let tokenURI = new URL(STRAVA_TOKEN_URI);
-      const params = {
-        code: searchParams.get('code')
-      };
-
-      Object.keys(params).forEach(key => tokenURI.searchParams.append(key, params[key]));
-      fetch(tokenURI)
-        .then(res => res.json())
-        .then(res => {
+      const fetchAuthedUser = async () => {
+        const response = await fetchAuthorizedStravaUser(searchParams.get("code"));
+        if (isMounted && response) {
           dispatch({
             type: "update_user_auth",
             payload: {
-              token: res.access_token,
-              refreshToken: res.refresh_token,
-              user: res.athlete,
+              token: response.access_token,
+              refreshToken: response.refresh_token,
+              user: response.athlete,
             }
           });
-        });
+        }
+      }
+
+      fetchAuthedUser();
     }
+
+    // useEffect cleanup
+    return () => (isMounted = false)
   });
 
   if (stravaState.token) {
