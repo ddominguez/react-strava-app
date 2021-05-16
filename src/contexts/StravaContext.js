@@ -8,12 +8,46 @@ const defaultState = {
   user: null
 };
 
+/**
+ * Attempts to get strava data from session storage and return as defaul state.
+ */
+const getDefaultState = () => {
+  const token = sessionStorage.getItem("token");
+  const refreshToken = sessionStorage.getItem("refreshToken");
+  const user = sessionStorage.getItem("user");
+  if (!!token || !!refreshToken || !!user) {
+    return {
+      token,
+      refreshToken,
+      user: JSON.parse(user)
+    };
+  }
+
+  return defaultState;
+};
+
+/**
+ * Adds strava athlete and api tokens to session storage.
+ */
+const addUserToStorage = (payload) => {
+  if (payload?.token) {
+    sessionStorage.setItem("token", payload.token);
+  }
+  if (payload?.refreshToken) {
+    sessionStorage.setItem("refreshToken", payload.refreshToken);
+  }
+  if (payload?.user) {
+    sessionStorage.setItem("user", JSON.stringify(payload.user));
+  }
+};
+
 const StravaStateContext = React.createContext();
 const StravaDispatchContext = React.createContext();
 
 const stravaReducer = (state, action) => {
   switch (action.type) {
     case "update_user_auth": {
+      addUserToStorage(action?.payload);
       return {
         ...state,
         token: action.payload.token,
@@ -28,7 +62,7 @@ const stravaReducer = (state, action) => {
 };
 
 const StravaContextProvider = ({ children }) => {
-  const [state, dispatch] = React.useReducer(stravaReducer, defaultState);
+  const [state, dispatch] = React.useReducer(stravaReducer, getDefaultState());
 
   return (
     <StravaStateContext.Provider value={state}>
