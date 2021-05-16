@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import './StravaAuthorize.css';
-import AuthButtonIcon from '../../assets/btn_strava_connectwith_orange.svg'
+import React, { Component } from "react";
+
+import { STRAVA_AUTHORIZE_URI } from "../../constants"
+import AuthButtonIcon from "../../assets/btn_strava_connectwith_orange.svg";
+
+import "./StravaAuthorize.css";
 
 class StravaAuthorize extends Component {
   render() {
-    const authUrl = process.env.REACT_APP_AUTH_URI
     return (
       <div className="auth-button">
-        <a href={authUrl}>
+        <a href={STRAVA_AUTHORIZE_URI}>
             <img
                 className="auth-button-icon"
                 alt="Connect with Strava"

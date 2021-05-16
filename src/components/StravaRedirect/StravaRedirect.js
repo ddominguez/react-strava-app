@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
 
+import { STRAVA_TOKEN_URI } from "../../constants";
 import { StravaDispatchContext, StravaStateContext } from "../../contexts/StravaContext";
 
 const StravaRedirect = () => {
@@ -10,7 +11,7 @@ const StravaRedirect = () => {
   React.useEffect(() => {
     if (!stravaState.token) {
       const searchParams = new URLSearchParams(window.location.search);
-      let tokenURI = new URL(process.env.REACT_APP_TOKEN_URI);
+      let tokenURI = new URL(STRAVA_TOKEN_URI);
       const params = {
         code: searchParams.get('code')
       };
