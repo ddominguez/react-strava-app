@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
+import StravaActivity from "./StravaActivity";
+import StravaActivityDetail from "./StravaActivityDetail";
+import StravaUser from "../StravaUser/StravaUser";
+
+import { fetchUserStravaActivities } from "../../api/strava";
 import { StravaStateContext } from "../../contexts/StravaContext";
 
-import StravaActivity from './StravaActivity';
-import StravaActivityDetail from './StravaActivityDetail';
-import StravaUser from '../StravaUser/StravaUser'
-
-import './Strava.css';
+import "./Strava.css";
 
 const Strava = () => {
   const [activities, setActivities] = React.useState([]);
@@ -14,17 +15,21 @@ const Strava = () => {
   const stravaState = React.useContext(StravaStateContext);
 
   React.useEffect(() => {
-    const url = 'https://www.strava.com/api/v3/activities?per_page=10';
-    fetch(url, {
-      headers: {
-        'Authorization': `Bearer ${stravaState.token}`
+    let isMounted = true;
+
+    const fetchActivities = async () => {
+      const response = await fetchUserStravaActivities(stravaState.token);
+      if (isMounted && response) {
+        setActivities(response);
       }
-    })
-    .then(res => res.json())
-    .then(res => {
-      setActivities(res);
-    })
-    .catch(error => console.log(error));
+    };
+
+    if (stravaState.token) {
+      fetchActivities();
+    }
+
+    // useEffect cleanup
+    return () => (isMounted = false)
   }, [stravaState.token]);
 
   const handleSelectActivity = (id) => {
