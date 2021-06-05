@@ -1,8 +1,15 @@
-import React from "react";
-
 import { GOOGLE_MAPS_API_KEY, MAP_BOX_ACCESS_TOKEN } from "../../constants";
 
-const StaticMap = (props) => {
+interface StaticMapProps {
+    // google | mapbox
+    mapType: string;
+    // activity name
+    name: string;
+    // map polyline
+    polyline: string;
+}
+
+const StaticMap = (props: StaticMapProps) => {
     const {mapType, name, polyline} = props;
     if (!polyline) {
         console.debug("StaticMap is missing map polyline.");
@@ -19,7 +26,7 @@ const StaticMap = (props) => {
             imgSrc = `https://maps.googleapis.com/maps/api/staticmap?scale=2&size=640x300&path=enc:${mapPolyline}&key=${GOOGLE_MAPS_API_KEY}`;
             break;
     }
-    return (<img alt={name} src={imgSrc} />);
+    return <img alt={name} src={imgSrc} />;
 };
 
 export { StaticMap }

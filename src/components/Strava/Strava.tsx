@@ -10,7 +10,7 @@ import { StravaStateContext } from "../../contexts/StravaContext";
 import "./Strava.css";
 
 const Strava = () => {
-  const [activities, setActivities] = React.useState([]);
+  const [activities, setActivities] = React.useState<{[key: string]: any}[]>([]);
   const [selectedActivityIndex, setSelectedActivityIndex] = React.useState(0);
   const stravaState = React.useContext(StravaStateContext);
 
@@ -26,20 +26,30 @@ const Strava = () => {
 
     if (stravaState.token) {
       fetchActivities();
+      return () => {};
     }
 
     // useEffect cleanup
     return () => (isMounted = false)
   }, [stravaState.token]);
 
-  const handleSelectActivity = (id) => {
+  const handleSelectActivity = (id: number) => {
     const selectedActivityIndex = activities.findIndex(activity => activity.id === id);
     setSelectedActivityIndex(selectedActivityIndex);
   };
 
   const handleActivityMenuClick = () => {
-    document.querySelector(".strava-activity-list").classList.add("open");
+    document.querySelector(".strava-activity-list")?.classList.add("open");
   };
+
+  const activeActivity = activities[selectedActivityIndex];
+  const activityDetailProps = {
+    name: activeActivity?.name,
+    start_date: activeActivity?.start_date,
+    distance: activeActivity?.distance,
+    elapsed_time: activeActivity?.elapsed_time,
+    map: activeActivity?.map
+  }
 
   return (
     <div className="strava-app">
@@ -58,8 +68,8 @@ const Strava = () => {
                 />
       })}
       </div>
-      { activities[selectedActivityIndex]
-        ? <StravaActivityDetail activity={activities[selectedActivityIndex]} />
+      { activeActivity
+        ? <StravaActivityDetail {...activityDetailProps} />
         : null }
     </div>
   );

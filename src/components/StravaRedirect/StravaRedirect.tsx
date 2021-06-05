@@ -13,7 +13,8 @@ const StravaRedirect = () => {
     if (!stravaState.token) {
       const searchParams = new URLSearchParams(window.location.search);
       const fetchAuthedUser = async () => {
-        const response = await fetchAuthorizedStravaUser(searchParams.get("code"));
+        const code =  searchParams.get("code") ?? "";
+        const response = await fetchAuthorizedStravaUser(code);
         if (isMounted && response) {
           dispatch({
             type: "update_user_auth",
@@ -27,7 +28,9 @@ const StravaRedirect = () => {
       }
 
       fetchAuthedUser();
+      return () => {};
     }
+    
 
     // useEffect cleanup
     return () => (isMounted = false)

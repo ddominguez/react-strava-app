@@ -1,3 +1,3 @@
 import StravaAuthorize from './StravaAuthorize'
 
-export default StravaAuthorize
+export default StravaAuthorize;
