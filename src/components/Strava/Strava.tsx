@@ -18,20 +18,20 @@ const Strava = () => {
     let isMounted = true;
 
     const fetchActivities = async () => {
-      const response = await fetchUserStravaActivities(stravaState.token);
+      const response = await fetchUserStravaActivities(stravaState?.token);
       if (isMounted && response) {
         setActivities(response);
       }
     };
 
-    if (stravaState.token) {
+    if (stravaState?.token) {
       fetchActivities();
       return () => {};
     }
 
     // useEffect cleanup
     return () => (isMounted = false)
-  }, [stravaState.token]);
+  }, [stravaState?.token]);
 
   const handleSelectActivity = (id: number) => {
     const selectedActivityIndex = activities.findIndex(activity => activity.id === id);

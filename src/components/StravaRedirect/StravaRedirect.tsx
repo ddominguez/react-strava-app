@@ -10,20 +10,22 @@ const StravaRedirect = () => {
 
   React.useEffect(() => {
     let isMounted = true;
-    if (!stravaState.token) {
+    if (!stravaState?.token) {
       const searchParams = new URLSearchParams(window.location.search);
       const fetchAuthedUser = async () => {
         const code =  searchParams.get("code") ?? "";
         const response = await fetchAuthorizedStravaUser(code);
         if (isMounted && response) {
-          dispatch({
-            type: "update_user_auth",
-            payload: {
-              token: response.access_token,
-              refreshToken: response.refresh_token,
-              user: response.athlete,
-            }
-          });
+          if (dispatch) {
+            dispatch({
+              type: "update_user_auth",
+              payload: {
+                token: response.access_token,
+                refreshToken: response.refresh_token,
+                user: response.athlete,
+              }
+            });
+          }
         }
       }
 
@@ -36,7 +38,7 @@ const StravaRedirect = () => {
     return () => (isMounted = false)
   });
 
-  if (stravaState.token) {
+  if (stravaState?.token) {
     return <Redirect to='/' />;
   }
 

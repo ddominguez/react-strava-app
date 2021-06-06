@@ -17,7 +17,7 @@ const App = () => {
           exact
           path='/'
           render={() => {
-            if (!stravaState.token) {
+            if (!stravaState?.token) {
               return <StravaAuthorize />
             } else {
               return <Strava />

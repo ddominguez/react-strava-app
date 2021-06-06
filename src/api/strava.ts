@@ -10,7 +10,7 @@ export const fetchAuthorizedStravaUser = async (code: string) => {
     }
 };
 
-export const fetchUserStravaActivities = async (token: string) => {
+export const fetchUserStravaActivities = async (token: string | undefined) => {
     try {
         const response = await fetch("https://www.strava.com/api/v3/activities?per_page=10", {
             headers: {

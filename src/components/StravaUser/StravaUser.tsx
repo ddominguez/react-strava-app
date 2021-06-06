@@ -6,12 +6,12 @@ import './StravaUser.css';
 
 const StravaUser = () => {
   const stravaState = React.useContext(StravaStateContext);
-  const { user } = stravaState;
-  const fullname = `${user.firstname} ${user.lastname}`;
+  const user = stravaState?.user;
+  const fullname = `${user?.firstname} ${user?.lastname}`;
   return (
     <div className="strava-user">
       <div className="image">
-        <img src={user.profile} alt={fullname} />
+        <img src={user?.profile} alt={fullname} />
       </div>
       <div className="strava-user-info">
         <div className="name">
