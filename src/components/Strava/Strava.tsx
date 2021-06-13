@@ -26,11 +26,12 @@ const Strava = () => {
 
     if (stravaState?.token) {
       fetchActivities();
-      return () => {};
     }
 
     // useEffect cleanup
-    return () => (isMounted = false)
+    return () => {
+      isMounted = false
+    };
   }, [stravaState?.token]);
 
   const handleSelectActivity = (id: number) => {

@@ -30,12 +30,13 @@ const StravaRedirect = () => {
       }
 
       fetchAuthedUser();
-      return () => {};
     }
     
 
     // useEffect cleanup
-    return () => (isMounted = false)
+    return () => {
+      isMounted = false
+    };
   });
 
   if (stravaState?.token) {
