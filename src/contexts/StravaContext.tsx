@@ -1,7 +1,5 @@
 import React from "react";
 
-// export const StravaContext = React.createContext(undefined);
-
 interface UserAuth {
   token: string;
   refreshToken: string;

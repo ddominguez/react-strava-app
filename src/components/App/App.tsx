@@ -6,8 +6,6 @@ import Strava from '../Strava/Strava';
 import StravaRedirect from '../StravaRedirect/StravaRedirect';
 import { StravaStateContext } from "../../contexts/StravaContext";
 
-import './App.css';
-
 const App = () => {
   const stravaState = React.useContext(StravaStateContext);
   return (
