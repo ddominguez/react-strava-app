@@ -1,5 +1,3 @@
-// import React from "react";
-
 import { StaticMap } from "./StaticMap";
 
 const metersToMiles = (meters: number) => {
@@ -33,6 +31,21 @@ interface StravaActivityDetailProps {
   map: { [key: string]: string };
 }
 
+interface ActivityStatProps {
+  statLabel: string;
+  statValue: string;
+}
+
+const ActivityStat = (props: ActivityStatProps) => {
+  const { statLabel, statValue } = props;
+  return (
+    <div className="stat">
+      <span className="stat-label">{statLabel}</span>
+      <span className="stat-value">{statValue}</span>
+    </div>
+  );
+};
+
 const StravaActivityDetail = (props: StravaActivityDetailProps) => {
   const {
     name,
@@ -52,20 +65,10 @@ const StravaActivityDetail = (props: StravaActivityDetailProps) => {
       <div className="strava-activity-date">{activityDate}</div>
       <div className="strava-activity-name">{name}</div>
       <div className="strava-actvivity-stats">
-        <div className="stat distance">
-          <span className="stat-label">Distance</span>
-          <span className="stat-value">{distanceInMiles}</span>
-        </div>
-        <div className="stat elapsed-time">
-          <span className="stat-label">Elapsed Time</span>
-          <span className="stat-value">{elapsedTime}</span>
-        </div>
-        <div className="stat pace">
-          <span className="stat-label">Pace</span>
-          <span className="stat-value">{pace}</span>
-        </div>
+        <ActivityStat statLabel="Distance" statValue={distanceInMiles} />
+        <ActivityStat statLabel="Elapsed Time" statValue={elapsedTime} />
+        <ActivityStat statLabel="Pace" statValue={pace} />
       </div>
-
       <StaticMap mapType="mapbox" name={name} polyline={map.summary_polyline} />
     </div>
   );
